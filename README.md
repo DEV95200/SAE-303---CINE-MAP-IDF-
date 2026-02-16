@@ -225,18 +225,11 @@ SAE-303-CINE-MAP-IDF/
 
 ## 🎓 Crédits
 
-### 👥 Équipe de développement
-- **[Votre nom]** - Développeur/Développeuse
-- **[Membre 2]** - Développeur/Développeuse
-- **[Membre 3]** - Développeur/Développeuse
-- **[Membre 4]** - Développeur/Développeuse *(si applicable)*
-
 ### 🏫 Établissement
 <div align="center">
 
-**Université Gustave Eiffel - IUT de Champs-sur-Marne**  
-BUT Métiers du Multimédia et de l'Internet  
-Promotion 2025-2026
+**BUT MMI - CY Cergy Paris Université*
+*Promotion 2025-2026
 
 </div>
 
@@ -251,7 +244,7 @@ Promotion 2025-2026
 
 ## 📄 Licence
 
-Ce projet a été réalisé dans un cadre pédagogique à l'IUT de Champs-sur-Marne.
+Ce projet a été réalisé dans un cadre pédagogique à l'IUT de Cergy pontoise site de Sarcelles.
 
 ---
 
