@@ -1,0 +1,287 @@
+/* Styles responsifs et utilitaires pour CinéMap IDF */
+
+/* === AMÉLIORATIONS RESPONSIVE MOBILE === */
+@media (max-width: 768px) {
+  /* Layout principal sur mobile */
+  .content-wrapper {
+    flex-direction: column;
+  }
+  
+  /* Réorganisation : filtres sous la carte */
+  .filters-panel {
+    order: 2; /* Mettre les filtres après la carte */
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  /* Carte réduite mais lisible sur mobile */
+  .map-section {
+    order: 1; /* Carte en premier */
+    margin: 1.6rem;
+    padding: 0.9rem;
+  }
+  
+  .framed-map-container {
+    width: calc(100vw - 2rem) !important; /* Largeur réduite avec marges */
+    max-width: none;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    /* Amélioration du scroll : zones de scroll séparées */
+    touch-action: pan-y;
+  }
+  
+  .map-container {
+    height: 50vh !important; /* Hauteur réduite sur mobile */
+    min-height: 300px;
+    /* Permettre le scroll de la page, pas de la carte par défaut */
+    touch-action: pan-y;
+  }
+  
+  /* Amélioration des filtres sur mobile */
+  .filters-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .filter-group {
+    width: 100%;
+  }
+  
+  .filter-select {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  /* Actions des filtres plus accessibles */
+  .filter-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  
+  .clear-filters-btn,
+  .apply-filters-btn {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .grid {
+    gap: 0.75rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+  
+  /* Carte encore plus compacte sur très petits écrans */
+  .framed-map-container {
+    width: calc(100vw - 1rem) !important;
+    margin: 0.5rem auto;
+  }
+  
+  .map-container {
+    height: 45vh !important;
+    min-height: 280px;
+  }
+  
+  /* Navigation mobile améliorée */
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #2a2a2a;
+    padding: 0.75rem;
+  }
+  
+  .mobile-nav-button {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Animations pour les éléments de l'interface */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Styles pour les boutons d'action */
+.btn-primary {
+  background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(42, 42, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: #d4af37;
+}
+
+/* Styles pour les cartes avec effet de profondeur */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+}
+
+/* Styles pour les notifications toast */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #0a0a0a;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  padding: 16px;
+  z-index: 1000;
+  transform: translateX(400px);
+  transition: transform 0.3s ease;
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+/* Améliorations pour les filtres */
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-dropdown::after {
+  content: '\f107';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #d4af37;
+}
+
+/* Styles pour les tooltips */
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0a0a0a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+  border: 1px solid #2a2a2a;
+}
+
+.tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styles pour les badges de statut */
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-success {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-warning {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.badge-info {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Styles pour les indicateurs de chargement */
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

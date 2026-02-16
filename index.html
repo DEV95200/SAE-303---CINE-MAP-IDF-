@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CinéMap IDF - Explorez les cinémas d'Île-de-France</title>
+  <meta name="description" content="Découvrez et explorez les cinémas d'Île-de-France avec CinéMap. Filtrez par genre, département et trouvez le cinéma parfait pour votre sortie.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Configuration Tailwind personnalisée -->
+  <script src="assets/js/config-tailwind.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS personnalisé -->
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/geolocation.css">
+
+  <!-- Feuille de style Leaflet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+</head>
+<body class="main-body">
+
+  <!-- Écran de chargement -->
+  <div id="loading-screen" class="loading-screen" role="alert" aria-live="polite" aria-busy="true">
+    <div class="loading-content">
+      <div class="loading-spinner" aria-hidden="true"></div>
+      <h2 class="loading-title">CinéMap IDF</h2>
+      <p class="loading-subtitle">Chargement des cinémas...</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="header-content">
+        <div class="logo-section">
+          <div class="logo-icon">
+            <i class="fas fa-film"></i>
+          </div>
+          <div class="logo-text">
+            <h1>CinéMap IDF</h1>
+            <p>Explorez les cinémas d'Île-de-France</p>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="main-nav" role="navigation" aria-label="Navigation principale">
+          <button id="nav-map" class="nav-button active" aria-label="Afficher la carte des cinémas" aria-pressed="true">
+            <i class="fas fa-map-marked-alt" aria-hidden="true"></i>Carte
+          </button>
+          <button id="nav-list" class="nav-button" aria-label="Afficher la liste des cinémas" aria-pressed="false">
+            <i class="fas fa-list" aria-hidden="true"></i>Liste
+          </button>
+          <button id="nav-stats" class="nav-button" aria-label="Afficher les statistiques" aria-pressed="false">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i>Statistiques
+          </button>
+          <button id="nav-about" class="nav-button" aria-label="Afficher les informations du projet" aria-pressed="false">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>À propos
+          </button>
+        </nav>
+
+        <!-- Bouton du menu mobile -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-menu">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <div class="mobile-menu-content">
+        <button class="mobile-nav-button">
+          <i class="fas fa-map-marked-alt"></i>Carte
+        </button>
+        <button class="mobile-nav-button">
+          <i class="fas fa-list"></i>Liste
+        </button>
+        <button class="mobile-nav-button">
+          <i class="fas fa-chart-bar"></i>Statistiques
+        </button>
+        <button class="mobile-nav-button">
+          <i class="fas fa-info-circle"></i>À propos
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="relative">
+    
+    <!-- Panneau des filtres -->
+    <section id="filters-panel" class="filters-panel" role="search" aria-label="Filtres de recherche des cinémas">
+      <div class="filters-container">
+        <div class="filters-grid">
+          
+          <!-- Filtre des genres -->
+          <div class="filter-group">
+            <label class="filter-label">
+              <i class="fas fa-masks-theater"></i>Genre
+            </label>
+            <select id="genre-filter" class="filter-select">
+              <option value="all">Tous les genres</option>
+            </select>
+          </div>
+
+          <!-- Filtre des départements -->
+          <div class="filter-group">
+            <label class="filter-label">
+              <i class="fas fa-map-marker-alt"></i>Département
+            </label>
+            <select id="departement-filter" class="filter-select">
+              <option value="all">Tous les départements</option>
+            </select>
+          </div>
+
+          <!-- Filtre de la note -->
+          <div class="filter-group">
+            <label class="filter-label">
+              <i class="fas fa-star"></i>Note minimum
+            </label>
+            <select id="rating-filter" class="filter-select">
+              <option value="0">Toutes les notes</option>
+              <option value="3">3+ étoiles</option>
+              <option value="4">4+ étoiles</option>
+              <option value="4.5">4.5+ étoiles</option>
+            </select>
+          </div>
+
+          <!-- Filtre des services -->
+          <div class="filter-group">
+            <label class="filter-label">
+              <i class="fas fa-cogs"></i>Services
+            </label>
+            <select id="services-filter" class="filter-select">
+              <option value="all">Tous les services</option>
+              <option value="IMAX">IMAX</option>
+              <option value="4DX">4DX</option>
+              <option value="3D">3D</option>
+              <option value="VIP">VIP</option>
+              <option value="parking">Parking</option>
+            </select>
+          </div>
+
+          <!-- Actions -->
+          <div class="filter-actions">
+            <button id="clear-filters" class="clear-filters-btn" aria-label="Réinitialiser tous les filtres">
+              <i class="fas fa-eraser" aria-hidden="true"></i>Réinitialiser
+            </button>
+            <button id="geolocation-btn" class="geolocation-btn" aria-label="Localiser ma position">
+              <i class="fas fa-location-arrow" aria-hidden="true"></i>Ma position
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Barre de recherche-->
+        <div class="search-section">
+          <div class="search-wrapper">
+            <label for="search-input" class="sr-only">Rechercher un cinéma par nom</label>
+            <input type="text" id="search-input" placeholder="Rechercher un cinéma..." class="search-input" aria-label="Rechercher un cinéma par nom">
+            <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- Compteur de résultats -->
+        <div class="results-counter">
+          <span id="results-counter" class="results-text">
+            <i class="fas fa-film"></i><span id="results-count">0</span> cinémas trouvés
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Sections -->
+    <div class="content-wrapper">
+      
+      <!-- Map Section -->
+      <section id="map-section" class="content-section active map-section" role="region" aria-label="Carte interactive des cinémas">
+        <div class="cinema-map-frame">
+          <!-- Bannière meilleure destination -->
+          <div id="best-destination-banner" class="best-destination-banner">
+            <i class="fas fa-route"></i> La meilleure destination
+          </div>
+          
+          <!-- Container de la carte avec cadre -->
+          <div class="framed-map-container">
+            <div id="map" class="map-container"></div>
+          </div>
+        </div>
+        
+        <!-- Map Controls -->
+        <div class="map-controls">
+          <div class="map-control-panel">
+            <label class="map-control-label">Style de carte</label>
+            <select id="map-style-select" class="map-style-select">
+              <option value="osm">Classique</option>
+              <option value="satellite">Satellite</option>
+              <option value="dark">Sombre</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- List Section -->
+      <section id="list-section" class="content-section hidden list-section" role="region" aria-label="Liste des cinémas">
+        <div class="list-container">
+          <div class="cinemas-grid" id="cinemas-grid">
+            <!-- Cinema cards will be inserted here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section id="stats-section" class="content-section hidden stats-section" role="region" aria-label="Statistiques des cinémas">
+        <div class="stats-container">
+          
+          <!-- En-tête statistiques -->
+          <div class="stats-header">
+            <h2 class="stats-main-title">
+              <i class="fas fa-chart-bar"></i> 
+              Statistiques des cinémas d'Île-de-France
+            </h2>
+            <p class="stats-subtitle">
+              Découvrez les tendances et analyses de notre réseau de cinémas
+            </p>
+          </div>
+
+          <!-- Cartes statistiques principales -->
+          <div class="stats-cards-grid" id="stats-cards-container">
+            <!-- Les cartes seront générées par JavaScript -->
+          </div>
+
+
+
+          <!-- Section insights -->
+          <div class="insights-section">
+            <h3 class="insights-title">
+              <i class="fas fa-lightbulb"></i>
+              Insights & Tendances
+            </h3>
+            <div class="insights-grid" id="insights-container">
+              <!-- Les insights seront générés par JavaScript -->
+            </div>
+          </div>
+
+          <!-- Top cinémas -->
+          <div class="top-cinemas-section">
+            <h3 class="top-cinemas-title">
+              <i class="fas fa-trophy"></i>
+              Top 5 des cinémas les mieux notés
+            </h3>
+            <div class="top-cinemas-grid" id="top-cinemas-container">
+              <!-- Le top sera généré par JavaScript -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Cinema Detail Modal -->
+  <div id="cinema-modal" class="cinema-modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-content">
+      <div id="modal-content">
+        <!-- Modal content will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+ 
+  <section id="about-section" class="about-section hidden">
+    <div class="about-container">
+      
+      <!-- Présentation du projet -->
+      <div class="about-content">
+        <h2 class="about-title">
+          <i class="fas fa-info-circle"></i> À propos du projet
+        </h2>
+        <div class="about-description">
+          <p>
+            <strong>CinéMap IDF</strong> est une application web interactive développée dans le cadre de la 
+            <strong>SAÉ 303 - Concevoir des visualisations de données pour le web</strong>. 
+            Cette application permet d'explorer et de visualiser les cinémas d'Île-de-France de manière 
+            interactive grâce à une carte, des filtres avancés et des statistiques détaillées.
+          </p>
+          <p>
+            L'objectif de ce projet est de rendre accessible et compréhensible un jeu de données 
+            géographiques en proposant une interface moderne, intuitive et responsive. Les utilisateurs 
+            peuvent filtrer les cinémas par département, genre de films, note, services disponibles, 
+            et même localiser les cinémas les plus proches de leur position.
+          </p>
+          <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600;">
+            <i class="fas fa-star"></i> Fonctionnalités principales
+          </h3>
+          <ul style="list-style: disc; margin-left: 2rem; line-height: 1.8;">
+            <li>Carte interactive avec géolocalisation</li>
+            <li>Filtres multiples (département, genre, note, services)</li>
+            <li>Vue liste avec fiches détaillées des cinémas</li>
+            <li>Statistiques et graphiques dynamiques</li>
+            <li>Design responsive adapté mobile/tablette/desktop</li>
+            <li>Interface accessible et conforme aux standards WCAG</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Équipe du projet -->
+      <div class="team-section">
+        <h3 class="section-subtitle">
+          <i class="fas fa-users"></i> Équipe du projet
+        </h3>
+        <div class="team-info">
+          <ul class="team-list">
+            <li><i class="fas fa-user"></i> DANG Thanh Toan</li>
+            <li><i class="fas fa-user"></i> DE CASTRO Timéo</li>
+            <li><i class="fas fa-user"></i> BRUNO JEAN BAPTISTE Gaëtan</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Informations académiques -->
+      <div class="academic-info">
+        <h3 class="section-subtitle">
+          <i class="fas fa-graduation-cap"></i> Informations académiques
+        </h3>
+        <div class="academic-details">
+          <p><strong>Année universitaire:</strong> 2025-2026</p>
+          <p><strong>Promotion:</strong> BUT MMI 2</p>
+          <p><strong>Formation:</strong> BUT Métiers du Multimédia et de l'Internet</p>
+          <p><strong>SAÉ:</strong> 303 - Concevoir des visualisations de données pour le web</p>
+        </div>
+      </div>
+
+      <!-- Sources des données -->
+      <div class="sources-section">
+        <h3 class="section-subtitle">
+          <i class="fas fa-database"></i> Sources des données
+        </h3>
+        <div class="sources-content">
+          <p class="sources-intro">
+            Conformément aux exigences de la SAÉ 303, voici les sources des jeux de données utilisés 
+            dans cette application :
+          </p>
+          <div class="source-item">
+            <p><strong>Jeu de données principal :</strong></p>
+            <ul style="list-style: disc; margin-left: 2rem; margin-top: 0.5rem; line-height: 1.8;">
+              <li><strong>Nom :</strong> Les salles de cinémas en Île-de-France</li>
+              <li><strong>Source :</strong> Région Île-de-France - Open Data</li>
+              <li><strong>Format :</strong> Données ouvertes publiques</li>
+              <li><strong>Lien :</strong> <a href="https://data.iledefrance.fr/explore/dataset/les_salles_de_cinemas_en_ile-de-france" target="_blank" rel="noopener noreferrer" style="color: #4a9eff; text-decoration: underline;">data.iledefrance.fr - Cinémas IDF</a></li>
+              <li><strong>Utilisation :</strong> Données publiques exploitées pour l'analyse et la visualisation</li>
+            </ul>
+        </div>
+      </div>
+
+      <!-- Logos université/IUT -->
+      <div class="university-logos-simple">
+        <div class="logos-inline">
+          <img src="assets/images/logos/CY IUT_coul.png" 
+               alt="Logo IUT de Cergy-Pontoise" 
+               class="university-logo-simple">
+          <img src="assets/images/logos/CY Cergy Paris Universite_coul.png" 
+               alt="Logo CY Cergy Paris Université" 
+               class="university-logo-simple">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">
+          <i class="fas fa-film"></i>
+        </div>
+        <h3 class="footer-title">CinéMap IDF</h3>
+      </div>
+      <p class="footer-subtitle">Votre guide pour découvrir les cinémas d'Île-de-France</p>
+      
+      <!-- Logos université dans le footer -->
+      <div class="footer-university-logos">
+        <img src="assets/images/logos/CY IUT_coul.png" 
+             alt="IUT de Cergy-Pontoise" 
+             class="footer-university-logo">
+        <img src="assets/images/logos/CY Cergy Paris Universite_coul.png" 
+             alt="CY Cergy Paris Université" 
+             class="footer-university-logo">
+      </div>
+      
+      <div class="footer-info">
+        <span>&copy; 2025-2026 CinéMap IDF</span>
+        <span>•</span>
+        <span>SAÉ 303 - BUT MMI 2</span>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Chargement du fichier JavaScript principal de Leaflet depuis le CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  
+  <!-- plugin MarkerCluster -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  
+  <!-- Chart.js for statistics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.9.1/chart.min.js"></script>
+  
+  <!-- Scripts JavaScript personnalisés -->
+  <script src="assets/js/utilitaires.js"></script>
+  <script src="assets/js/carte.js"></script>
+  <script src="assets/js/geolocalisation.js"></script>
+  <script src="assets/js/filtres.js"></script>
+  <script src="assets/js/modale.js"></script>
+  <script src="assets/js/statistiques.js"></script>
+  <script src="assets/js/application.js"></script>
+
+</body>
+</html>
