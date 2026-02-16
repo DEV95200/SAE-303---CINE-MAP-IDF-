@@ -9,6 +9,10 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
+![Status](https://img.shields.io/badge/Status-Termin%C3%A9-green?style=for-the-badge)
+![Année](https://img.shields.io/badge/Ann%C3%A9e-2024--2025-blue?style=for-the-badge)
+![Durée](https://img.shields.io/badge/Dur%C3%A9e-Semestre%201-orange?style=for-the-badge)
+
 </div>
 
 ---
