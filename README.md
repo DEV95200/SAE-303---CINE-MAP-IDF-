@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎬 SAE 303 - CINE MAP IDF
+# SAE 303 - CINE MAP IDF
 
 ### Explorez les cinémas d'Île-de-France à travers une visualisation de données interactive
 
@@ -17,38 +17,38 @@
 
 ---
 
-## 📋 Table des matières
+## Table des matières
 
-- [À propos du projet](#-à-propos-du-projet)
-- [Contexte pédagogique](#-contexte-pédagogique)
-- [Objectifs d'apprentissage](#-objectifs-dapprentissage)
-- [Technologies utilisées](#-technologies-utilisées)
-- [Ce que j'ai appris](#-ce-que-jai-appris)
-- [Compétences acquises](#-compétences-acquises)
-- [Crédits](#-crédits)
+- [À propos du projet](#à-propos-du-projet)
+- [Contexte pédagogique](#contexte-pédagogique)
+- [Objectifs d'apprentissage](#objectifs-dapprentissage)
+- [Technologies utilisées](#technologies-utilisées)
+- [Ce que j'ai appris](#ce-que-jai-appris)
+- [Compétences acquises](#compétences-acquises)
+- [Crédits](#crédits)
 
 ---
 
-## 🎯 �� propos du projet
+## À propos du projet
 
-**CINE MAP IDF** est un projet de visualisation de données interactive développé dans le cadre de la SAÉ 303 (Situation d'Apprentissage et d'Évaluation). L'objectif principal est de créer une application web permettant d'explorer et de visualiser les cinémas présents en Île-de-France de manière intuitive et engageante.
+**CINE MAP IDF** est un projet de visualisation de données interactive développé dans le cadre de la SAÉ 303 (Situation d'Apprentissage et d'Évaluation). L'objectif principal est de créer une application interactive en JavaScript.
 
-### 🎨 Type de réalisation
+### Type de réalisation
 Ce projet s'inscrit dans l'axe **développement** de la SAÉ 303, avec la création d'une **application interactive en JavaScript**.
 
-### 🌟 Fonctionnalités principales
-- 📍 Carte interactive des cinémas d'Île-de-France
-- 📊 Visualisation des données en temps réel
-- 🔍 Interface utilisateur responsive et accessible
-- 🎭 Exploration géographique des salles de cinéma
+### Fonctionnalités principales
+- Carte interactive des cinémas d'Île-de-France
+- Visualisation des données en temps réel
+- Interface utilisateur responsive et accessible
+- Exploration géographique des salles de cinéma
 
 ---
 
-## 📚 Contexte pédagogique
+## Contexte pédagogique
 
-Dans un monde où les données (*data*) occupent une place centrale, il est essentiel de savoir les présenter de manière claire et engageante. Cette SAÉ nous a permis de transformer des données brutes en visualisations interactives pour faciliter leur compréhension par le grand public.
+Dans un monde où les données (*data*) occupent une place centrale, il est essentiel de savoir les présenter de manière claire et engageante. Cette SAÉ nous a permis de transformer des données brutes en visualisations interactives.
 
-### 🎓 Formation
+### Formation
 - **Année universitaire** : 2025-2026
 - **Promotion** : BUT MMI (Métiers du Multimédia et de l'Internet)
 - **Semestre** : 3
@@ -56,7 +56,7 @@ Dans un monde où les données (*data*) occupent une place centrale, il est esse
 
 ---
 
-## 🎯 Objectifs d'apprentissage
+## Objectifs d'apprentissage
 
 Cette SAÉ a permis de valider plusieurs **Apprentissages Critiques (AC)** :
 
@@ -69,7 +69,7 @@ Cette SAÉ a permis de valider plusieurs **Apprentissages Critiques (AC)** :
 | **AC24.01** | Produire des pages et applications Web responsives |
 | **AC24.03** | Développer des interactions riches ou des dispositifs interactifs |
 
-### 📖 Ressources mobilisées
+### Ressources mobilisées
 
 - **R3.09** - Création et design interactif (UI)
 - **R3.10** - Culture artistique
@@ -78,7 +78,7 @@ Cette SAÉ a permis de valider plusieurs **Apprentissages Critiques (AC)** :
 
 ---
 
-## 💻 Technologies utilisées
+## Technologies utilisées
 
 ```
 Frontend
@@ -101,64 +101,64 @@ Outils
 
 ---
 
-## 🌱 Ce que j'ai appris
+## Ce que j'ai appris
 
-### 📊 Manipulation et visualisation de données
+### Manipulation et visualisation de données
 
 Au cours de ce projet, j'ai développé des compétences essentielles en **data visualization** :
 
-- ✅ **Traitement de données** : Apprendre à charger, parser et manipuler des jeux de données au format JSON
-- ✅ **API Fetch** : Maîtriser les requêtes asynchrones pour charger des données dynamiquement
-- ✅ **Librairies de données** : Utiliser Lodash pour transformer et filtrer efficacement les données
+- **Traitement de données** : Apprendre à charger, parser et manipuler des jeux de données au format JSON
+- **API Fetch** : Maîtriser les requêtes asynchrones pour charger des données dynamiquement
+- **Librairies de données** : Utiliser Lodash pour transformer et filtrer efficacement les données
 
-### 🗺️ Cartographie interactive
+### Cartographie interactive
 
 La création d'une carte interactive m'a permis de découvrir :
 
-- ✅ **Leaflet.js / OpenStreetMap** : Intégrer des cartes interactives dans une application web
-- ✅ **Données géographiques** : Comprendre et utiliser le format GeoJSON
-- ✅ **Géolocalisation** : Afficher des points d'intérêt (POI) avec latitude et longitude
+- **Leaflet.js / OpenStreetMap** : Intégrer des cartes interactives dans une application web
+- **Données géographiques** : Comprendre et utiliser le format GeoJSON
+- **Géolocalisation** : Afficher des points d'intérêt (POI) avec latitude et longitude
 
-### 🎨 Design et UX
+### Design et UX
 
 J'ai renforcé mes compétences en design web :
 
-- ✅ **Accessibilité** : Respecter les contrastes, tailles de texte et bonnes pratiques WCAG
-- ✅ **Responsive Design** : Créer une interface adaptative pour tous les appareils
-- ✅ **UI/UX** : Concevoir une expérience utilisateur intuitive et engageante
+- **Accessibilité** : Respecter les contrastes, tailles de texte et bonnes pratiques WCAG
+- **Responsive Design** : Créer une interface adaptative pour tous les appareils
+- **UI/UX** : Concevoir une expérience utilisateur intuitive et engageante
 
-### 💻 Développement web
+### Développement web
 
 Sur le plan technique, j'ai progressé dans :
 
-- ✅ **JavaScript moderne** : Utilisation de ES6+ (arrow functions, async/await, destructuring)
-- ✅ **DOM Manipulation** : Créer et modifier dynamiquement des éléments HTML
-- ✅ **Event Listeners** : Gérer les interactions utilisateur de manière efficace
-- ✅ **Debugging** : Utiliser les outils de développement du navigateur
+- **JavaScript moderne** : Utilisation de ES6+ (arrow functions, async/await, destructuring)
+- **DOM Manipulation** : Créer et modifier dynamiquement des éléments HTML
+- **Event Listeners** : Gérer les interactions utilisateur de manière efficace
+- **Debugging** : Utiliser les outils de développement du navigateur
 
-### 🔧 Outils et méthodologie
+### Outils et méthodologie
 
 Ce projet m'a également formé à :
 
-- ✅ **Git et GitHub** : Versionner mon code et collaborer efficacement
-- ✅ **Workflow de développement** : Organiser mon code et structurer mon projet
-- ✅ **Documentation** : Rédiger un README clair et informatif
-- ✅ **Sources et citations** : Importance de sourcer correctement ses données
+- **Git et GitHub** : Versionner mon code et collaborer efficacement
+- **Workflow de développement** : Organiser mon code et structurer mon projet
+- **Documentation** : Rédiger un README clair et informatif
+- **Sources et citations** : Importance de sourcer correctement ses données
 
-### 🧠 Compétences transversales
+### Compétences transversales
 
 Au-delà des aspects techniques :
 
-- ✅ **Analyse de données** : Identifier les insights pertinents dans un jeu de données
-- ✅ **Storytelling visuel** : Raconter une histoire à travers les données
-- ✅ **Autonomie** : Rechercher des solutions et résoudre des problèmes de manière indépendante
-- ✅ **Travail en équipe** : Collaborer efficacement en groupe de 3-4 personnes
+- **Analyse de données** : Identifier les insights pertinents dans un jeu de données
+- **Storytelling visuel** : Raconter une histoire à travers les données
+- **Autonomie** : Rechercher des solutions et résoudre des problèmes de manière indépendante
+- **Travail en équipe** : Collaborer efficacement en groupe de 3-4 personnes
 
 ---
 
-## 🏆 Compétences acquises
+## Compétences acquises
 
-### 🔍 Compétences techniques
+### Compétences techniques
 
 | Domaine | Compétence | Niveau |
 |---------|-----------|--------|
@@ -169,17 +169,17 @@ Au-delà des aspects techniques :
 | CSS | Responsive Design | ⭐⭐⭐⭐ |
 | Git | Gestion de versions | ⭐⭐⭐⭐ |
 
-### 🎯 Compétences méthodologiques
+### Compétences méthodologiques
 
-- 📌 Analyse et interprétation de jeux de données
-- 📌 Choix pertinent de visualisations selon le type de données
-- 📌 Conception d'interfaces utilisateur centrées sur l'expérience
-- 📌 Respect des normes d'accessibilité web
-- 📌 Documentation et présentation de projet
+- Analyse et interprétation de jeux de données
+- Choix pertinent de visualisations selon le type de données
+- Conception d'interfaces utilisateur centrées sur l'expérience
+- Respect des normes d'accessibilité web
+- Documentation et présentation de projet
 
 ---
 
-## 📦 Structure du projet
+## Structure du projet
 
 ```
 SAE-303-CINE-MAP-IDF/
@@ -198,9 +198,9 @@ SAE-303-CINE-MAP-IDF/
 
 ---
 
-## 📝 Règles et contraintes respectées
+## Règles et contraintes respectées
 
-### ✅ Exigences techniques
+### Exigences techniques
 
 - [x] Utilisation obligatoire de Git et GitHub
 - [x] Chargement des données via l'API Fetch
@@ -208,7 +208,7 @@ SAE-303-CINE-MAP-IDF/
 - [x] Respect des règles d'accessibilité (contrastes, textes...)
 - [x] Application responsive
 
-### ✅ Contenus obligatoires sur le site
+### Contenus obligatoires sur le site
 
 - [x] Présentation de l'application
 - [x] Liste des sources des données
@@ -216,33 +216,33 @@ SAE-303-CINE-MAP-IDF/
 - [x] Année universitaire + promotion
 - [x] Membres du groupe
 
-### ⚠️ Pénalités évitées
+### Pénalités évitées
 
-- ✅ **Sources citées** : Absence de sources = -33% de la note finale
-- ✅ **Respect des consignes** : Tous les éléments requis sont présents
+- **Sources citées** : Absence de sources = -33% de la note finale
+- **Respect des consignes** : Tous les éléments requis sont présents
 
 ---
 
-## 🎓 Crédits
+## Crédits
 
-### 🏫 Établissement
+### Établissement
 <div align="center">
 
-**BUT MMI - CY Cergy Paris Université*
-*Promotion 2025-2026
+**BUT MMI - CY Cergy Paris Université**
+**Promotion 2025-2026**
 
 </div>
 
-### 📚 Sources des données
+### Sources des données
 - **Jeu de données principal** : Région Île-de-France - Open Data
 - **Données cartographiques** : OpenStreetMap / Google Maps
 - **Autres sources** : data.iledefrance.fr - Cinémas IDF
 
-> 📌 **Note** : Toutes les sources utilisées sont listées dans le fichier `datasets/_liste-sources.ods`
+> **Note** : Toutes les sources utilisées sont listées dans le fichier `datasets/_liste-sources.ods`
 
 ---
 
-## 📄 Licence
+## Licence
 
 Ce projet a été réalisé dans un cadre pédagogique à l'IUT de Cergy pontoise site de Sarcelles.
 
@@ -250,7 +250,7 @@ Ce projet a été réalisé dans un cadre pédagogique à l'IUT de Cergy pontois
 
 <div align="center">
 
-### 🌟 Merci d'avoir consulté ce projet !
+### Merci d'avoir consulté ce projet !
 
 **Année universitaire 2025-2026** | **SAÉ 303** | **BUT MMI Semestre 3**
 
