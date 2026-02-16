@@ -10,8 +10,8 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ![Status](https://img.shields.io/badge/Status-Termin%C3%A9-green?style=for-the-badge)
-![Année](https://img.shields.io/badge/Ann%C3%A9e-2024--2025-blue?style=for-the-badge)
-![Durée](https://img.shields.io/badge/Dur%C3%A9e-Semestre%201-orange?style=for-the-badge)
+![Année](https://img.shields.io/badge/Ann%C3%A9e-2025--2026-blue?style=for-the-badge)
+![Durée](https://img.shields.io/badge/Dur%C3%A9e-Semestre%203-orange?style=for-the-badge)
 
 </div>
 
@@ -52,7 +52,7 @@ Dans un monde où les données (*data*) occupent une place centrale, il est esse
 - **Année universitaire** : 2025-2026
 - **Promotion** : BUT MMI (Métiers du Multimédia et de l'Internet)
 - **Semestre** : 3
-- **Groupe** : [Votre groupe]
+- **Groupe** : Dang thanh Toan, De castro Timéo, Bruno Jean Baptiste Gaëtan
 
 ---
 
@@ -241,9 +241,9 @@ Promotion 2025-2026
 </div>
 
 ### 📚 Sources des données
-- **Jeu de données principal** : [Source à compléter]
+- **Jeu de données principal** : Région Île-de-France - Open Data
 - **Données cartographiques** : OpenStreetMap / Google Maps
-- **Autres sources** : [À compléter selon vos sources]
+- **Autres sources** : data.iledefrance.fr - Cinémas IDF
 
 > 📌 **Note** : Toutes les sources utilisées sont listées dans le fichier `datasets/_liste-sources.ods`
 
